@@ -1,7 +1,7 @@
 const express = require('express')
 const MongoClient = require('mongodb').MongoClient
 const ObjectId = require('mongodb').ObjectId
-const{ insertOne, find, update, deleteOne } = require(`${__dirname}/CRUD.js`)
+const { insertOne, find, updateOne, deleteOne, deleteMany } = require(`${__dirname}/CRUD.js`)
 
 const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/app'
 const dbName = 'weakpoint'
@@ -43,15 +43,10 @@ app.use(express.json())
 /**
  * API
  */
+// for slide
 app.post(
     '/api/slide/',
     function(req, res) {
-        req.body = {
-            title: 'test-title',
-            content: '<p>test-content</p>',
-            seq: 1,
-            'last-editor': 'ben91lin'
-        }
         res.status(201)
         insertOne(pool, 'slide', req.body, res.json.bind(res))
     }
@@ -68,12 +63,54 @@ app.get(
 app.patch(
     '/api/slide/:_id',
     function(req, res) {
-        update(pool, 'slide', {_id: new ObjectId(req.params._id)}, res.json.bind(res))
+        req.body = {
+            'last-editor': 'yy'
+        }
+        updateOne(pool, 'slide', {_id: new ObjectId(req.params._id)}, req.body, res.json.bind(res))
     }
 )
 
 app.delete(
     '/api/slide/:_id',
+    function(req, res) {
+        deleteOne(pool, 'slide', {_id: new ObjectId(req.params._id)}, res.json.bind(res))
+    }
+)
+
+app.get(
+    '/api/slides/:presentation_id',
+    function(req, res) {
+        find(pool, 'slide', {presentation_id: new ObjectId(req.params.presentation_id)}, res.json.bind(res))
+    }
+)
+
+app.delete(
+    '/api/slides/:presentation_id',
+    function(req, res) {
+        deleteMany(pool, 'slide', {presentation_id: new ObjectId(req.params.presentation_id)}, res.json.bind(res))
+    }
+)
+
+// for presentation
+app.post(
+    '/api/presentation/',
+    function(req, res) {
+        res.status(201)
+        insertOne(pool, 'presentation', req.body, res.json.bind(res))
+    }
+)
+
+app.get(
+    '/api/presentation/?:_id',
+    function(req, res) {
+        const query =  req.params._id ? {_id: new ObjectId(req.params._id)} : {}
+        res.status(201)
+        find(pool, 'presentation', query, res.json.bind(res))
+    }
+)
+
+app.delete(
+    '/api/presentation/:_id',
     function(req, res) {
         deleteOne(pool, 'slide', {_id: new ObjectId(req.params._id)}, res.json.bind(res))
     }
@@ -91,4 +128,3 @@ app.use(
         res.status(404).type('text/plain').send('404 not found.')
     }
 )
-

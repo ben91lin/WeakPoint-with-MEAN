@@ -17,10 +17,12 @@ function find(db, collection, query, cb) {
     )
 }
 
-function update(db, collection, query, data, cb) {
-    db.collection(collection).update(
+function updateOne(db, collection, query, data, cb) {
+    db.collection(collection).updateOne(
         query,
-        data,
+        {
+            '$set': data
+        },
         function(err, result) {
             if (err) throw err
 
@@ -54,17 +56,16 @@ function insertOne(db, collection, data, cb) {
     )
 }
 
-// function updateSlide(db, query, data, cb) {
-//     db.collection('slide').insertOne(
-//         query,
-//         function(err, result) {
-//             assert.strictEqual(err, null)
-//             assert.strictEqual(3, result.n)
-//             assert.strictEqual(3, result.ops.length)
-//             console.log('[Insert] 1 data into slide collection')
-//             cb(result)
-//         }
-//     )
-// }
+function deleteMany(db, collection, query, cb) {
+    db.collection(collection).deleteMany(
+        query,
+        function(err, result) {
+            if (err) throw err
 
-module.exports = { insertOne, find, update, deleteOne }
+            console.log(`[DELETE] ${result.result.n} data from ${collection}`)
+            cb(result)
+        }
+    )
+}
+
+module.exports = { insertOne, find, updateOne, deleteOne, deleteMany }
