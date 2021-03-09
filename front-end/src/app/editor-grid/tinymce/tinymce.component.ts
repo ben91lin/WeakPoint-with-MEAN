@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TinymceComponent implements OnInit {
 
-  constructor() { }
+  public title: string
+
+  constructor() {
+    this.title = ''
+  }
 
   ngOnInit(): void {
+    this.title = 'New Title.'
   }
 
 }

@@ -1,0 +1,19 @@
+.tinymce {
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tinymce-title {
+    width: 100%;
+}
+
+.tinymce-title #tinymce-title {
+    width: 100%;
+    height: 4rem;
+}
+
+.tinymce-title-text {
+    font-size: 2rem;
+}

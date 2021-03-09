@@ -1,0 +1,27 @@
+<div class="[ tinymce ] -d-flex --w-100 --h-100">
+    <div class="[ tinymce-title ]">
+        <input type="text" name="tinymce-title" id="tinymce-title" class="[ tinymce-title-text ] --p-3" value="{{ title }}">
+        
+    </div>
+    <div class="--w-100 --h-100">
+        <editor class="--w-100 --h-100"
+            [init]="{
+                    base_url: '/tinymce',
+                    suffix: '.min',
+                    branding: false,
+                    width: '100%',
+                    height: '100%',
+                    plugins: [
+                        'advlist autolink lists link image charmap print preview anchor',
+                        'searchreplace visualblocks code fullscreen',
+                        'insertdatetime media table paste code help wordcount'
+                    ],
+                    toolbar:
+                        'undo redo | formatselect | bold italic backcolor | \
+                        alignleft aligncenter alignright alignjustify | \
+                        bullist numlist outdent indent | removeformat | help'
+                }">
+        </editor>
+        
+    </div>
+</div>
