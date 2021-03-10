@@ -10,11 +10,11 @@ export class TinymceComponent implements OnInit {
   public title: string
 
   constructor() {
-    this.title = ''
+
   }
 
   ngOnInit(): void {
-    this.title = 'New Title.'
+    this.title = 'New Title'
   }
 
 }

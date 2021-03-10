@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditorGridComponent } from './editor-grid.component';
+import { EditGridComponent } from './edit-grid.component';
 
-describe('EditorGridComponent', () => {
-  let component: EditorGridComponent;
-  let fixture: ComponentFixture<EditorGridComponent>;
+describe('EditGridComponent', () => {
+  let component: EditGridComponent;
+  let fixture: ComponentFixture<EditGridComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditorGridComponent ]
+      declarations: [ EditGridComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditorGridComponent);
+    fixture = TestBed.createComponent(EditGridComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
