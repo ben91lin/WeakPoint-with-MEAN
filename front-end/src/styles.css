@@ -43,6 +43,14 @@
     border-radius: 1rem;
 }
 
+.-radius-t-1 {
+    border-radius: 1rem 1rem 0 0;
+}
+
+.-radius-b-1 {
+    border-radius: 0 0 1rem 1rem;
+}
+
 .-radius-tl-1 {
     border-radius: 1rem 0 0 0;
 }
