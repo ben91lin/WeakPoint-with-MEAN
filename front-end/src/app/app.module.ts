@@ -12,7 +12,7 @@ import { EditGridComponent } from './edit-grid/edit-grid.component';
 import { ThumbnailsComponent } from './edit-grid/thumbnails/thumbnails.component';
 import { TemplatesComponent } from './edit-grid/templates/templates.component';
 import { TinymceComponent } from './edit-grid/tinymce/tinymce.component';
-import { ShowComponent } from './show/show/show.component';
+import { ShowComponent } from './show/show.component';
 
 console.log('TINYMCE_SCRIPT_SRC', TINYMCE_SCRIPT_SRC)
 console.log(AppComponent)

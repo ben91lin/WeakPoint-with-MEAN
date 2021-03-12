@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { trigger, state, style, animate, transition, group, query, animateChild } from '@angular/animations';
 
 // import { EditGridComponent } from './edit-grid'
 
@@ -11,21 +11,47 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     trigger(
       'fadeInOut',
       [
-        state(
-          'void',
-          style({ opacity: 0 })
-        ),
-        state(
-          'edit',
-          style({ opacity: 1 })
-        ),
         transition(
           'void => edit',
-          [animate('300ms 50ms ease-in-out')]
+          group([
+            query(
+              ':self',
+              animate('300ms 50ms ease-in-out', style({ opacity: 1 }))
+            ),
+            query(
+              '@slideFromRight',
+              animateChild()
+            ),
+            query(
+              '@slideFromBottom',
+              animateChild()
+            ),
+            query(
+              '@slideFromLeft',
+              animateChild()
+            )
+          ])
         ),
         transition(
           'edit => void',
-          [animate('300ms 50ms ease-in-out')]
+          group([
+            query(
+              ':self',
+              animate('300ms 50ms ease-in-out', style({ opacity: 0 }))
+            ),
+            query(
+              '@slideFromRight',
+              animateChild()
+            ),
+            query(
+              '@slideFromBottom',
+              animateChild()
+            ),
+            query(
+              '@slideFromLeft',
+              animateChild()
+            )
+          ])
         )
       ]
     )
@@ -44,7 +70,7 @@ export class AppComponent {
 
   setMode(mode :string) : void {
     this.mode = mode
-    console.log('AppCon:', mode)
+    console.log('AppCom:', mode)
   }
 
   isShow() :boolean {

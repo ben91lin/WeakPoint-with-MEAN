@@ -58,7 +58,7 @@ export class DropdownComponent implements OnInit {
       this.onSwitchMode.emit('show')
     }
     
-    console.log('dropdownCon', this.mode)
+    console.log('dropdownCom', this.mode)
   }
 
   switchToggle() :void {
