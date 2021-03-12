@@ -1,8 +1,8 @@
-<div class="[ dropdown ] -b-2 -radius-05 -b-color-blue">
-    <div class="[ options options-text ] --d-grid --bg-white -radius-1">
-        <div class="[ option ] --d-flex -bg-blue --mr-1 --mb-1 -radius-tl-1">Choose</div>
-        <div class="[ option ] --d-flex -bg-blue --ml-1 --mb-1 -radius-tr-1">Edit</div>
-        <div class="[ option ] --d-flex -bg-blue --mt-1 --mr-1 -radius-bl-1">Login</div>
-        <div class="[ option ] --d-flex -bg-blue --ml-1 --mt-1 -radius-br-1">Sign in</div>
+
+<div class="[ dropdown ]">
+    <button (click)="switchToggle()" class="[ dropdown-button ] -b-2 -radius-05 -b-color-blue"></button>
+    <div *ngIf="toggle === 'expand'" [@toggle]="toggle" class="[ options options-text ] --d-grid --bg-white -radius-1">
+        <div class="[ option ] --d-flex -bg-blue --mb-1 -radius-t-1 ">Choose</div>
+        <div class="[ option ] --d-flex -bg-blue -radius-b-1" (click)="switchMode()">{{(mode === 'edit' ? 'show' : 'edit')}}</div>
     </div>
 </div>

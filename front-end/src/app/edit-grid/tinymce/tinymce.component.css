@@ -9,7 +9,7 @@
     width: 100%;
 }
 
-.tinymce-title #tinymce-title {
+.tinymce-title input#tinymce-title {
     width: 100%;
     height: 4rem;
 }
