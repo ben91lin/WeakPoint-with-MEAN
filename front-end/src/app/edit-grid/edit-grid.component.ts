@@ -14,15 +14,15 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           style({ transform: 'translateX(100%)' })
         ),
         state(
-          'edit',
+          'Edit',
           style({ transform: 'translateX(0)' })
         ),
         transition(
-          'void => edit',
+          'void => Edit',
             animate('300ms 50ms ease-in-out')
         ),
         transition(
-          'edit => void',
+          'Edit => void',
             animate('300ms 50ms ease-in-out')
         )
       ]
@@ -35,15 +35,15 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           style({ transform: 'translateY(100%)' })
         ),
         state(
-          'edit',
+          'Edit',
           style({ transform: 'translateY(0)' })
         ),
         transition(
-          'void => edit',
+          'void => Edit',
             animate('300ms 50ms ease-in-out')
         ),
         transition(
-          'edit => void',
+          'Edit => void',
             animate('300ms 50ms ease-in-out')
         )
       ]
@@ -56,15 +56,15 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           style({ transform: 'translateX(-100%)' })
         ),
         state(
-          'edit',
+          'Edit',
           style({ transform: 'translateX(0)' })
         ),
         transition(
-          'void => edit',
+          'void => Edit',
             animate('300ms 50ms ease-in-out')
         ),
         transition(
-          'edit => void',
+          'Edit => void',
             animate('300ms 50ms ease-in-out')
         )
       ]

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition, group, query, animateChild } from '@angular/animations';
 
-// import { EditGridComponent } from './edit-grid'
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +10,7 @@ import { trigger, state, style, animate, transition, group, query, animateChild 
       'fadeInOut',
       [
         transition(
-          'void => edit',
+          'void => Edit',
           group([
             query(
               ':self',
@@ -33,7 +31,7 @@ import { trigger, state, style, animate, transition, group, query, animateChild 
           ])
         ),
         transition(
-          'edit => void',
+          'Edit => void',
           group([
             query(
               ':self',
@@ -64,21 +62,21 @@ export class AppComponent {
   public onePagePlugin: string
 
   constructor() {
-    this.mode = 'show'
+    this.mode = 'Show'
     this.onePagePlugin = ''
   }
 
-  setMode(mode :string) : void {
+  setMode(mode :string): void {
     this.mode = mode
     console.log('AppCom:', mode)
   }
 
-  isShow() :boolean {
-    return this.mode === 'show' ? true : false
+  isShow(): boolean {
+    return (this.mode === 'Show')
   }
 
-  isEdit() :boolean {
-    return this.mode === 'edit' ? true : false
+  isEdit(): boolean {
+    return (this.mode === 'Edit')
   }
 
   loadOnePagePlugin(pluginName: string): void {

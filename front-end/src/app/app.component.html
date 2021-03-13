@@ -1,3 +1,3 @@
-<app-dropdown [mode]=mode  (onSwitchMode)=setMode($event)></app-dropdown>
-<app-prev-next></app-prev-next>
-<app-edit-grid *ngIf=isEdit() [@fadeInOut]=mode [mode]=mode></app-edit-grid>
+<app-navigation [mode]=mode (onSwitchMode)=setMode($event)></app-navigation>
+<app-show *ngIf=isShow() [mode]=mode></app-show>
+<app-edit-grid *ngIf=isEdit() [@fadeInOut]=mode [mode]=mode class="--p-absolute --d-block --w-100 --h-100"></app-edit-grid>
