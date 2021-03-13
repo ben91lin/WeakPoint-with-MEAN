@@ -7,5 +7,7 @@
             {{ isEdit() ? 'Show' : 'Edit' }}
         </div>
     </div>
-    <button (click)=switchToggle() class="[ nav-toggle ] -b-1 -radius-05">^</button>
+    <button (click)=switchToggle() (click)=switchArrow() class="[ nav-toggle ] -b-1 -radius-05">
+        <span [innerHTML]=arrow class="[ nav-toggle-text ]"></span>
+    </button>
 </div>

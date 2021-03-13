@@ -1,0 +1,34 @@
+.thumbnails {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.thumbnail {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 16rem;
+    height: 9rem;
+    margin-top: 1rem;
+}
+
+.thumbnail-icon {
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 1rem;
+    top: -1rem;
+    cursor: pointer;
+}
+
+.duplicate {
+    right: calc(2rem - 1px);
+}
+
+.delete {
+    right: -1px;
+}

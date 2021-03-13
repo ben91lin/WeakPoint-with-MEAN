@@ -3,8 +3,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 3rem;
-    width: 8rem;
+    height: 3.5rem;
+    width: 7.4rem;
     right: 10rem;
     bottom: 1rem;
 }
@@ -23,4 +23,5 @@
     align-items: center;
     height: 100%;
     width: 3.5rem;
+    cursor: pointer;
 }

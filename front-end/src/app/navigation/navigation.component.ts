@@ -45,17 +45,14 @@ export class NavigationComponent implements OnInit {
 
   @Input() mode: string
   @Output() onSwitchMode = new EventEmitter<string>()
-  // public navItems: Array<NavItem>
   public toggle: string
+  public arrow: string
 
   constructor() { }
 
   ngOnInit(): void {
     this.toggle = 'collapse'
-    // this.navItems = [
-    //   new NavItem('Choose'),
-    //   new NavItem('Edit')
-    // ]
+    this.arrow = '&#708;'
   }
 
   switchMode(): void {
@@ -71,8 +68,20 @@ export class NavigationComponent implements OnInit {
   switchToggle() :void {
     if ( this.toggle === 'collapse' ) {
       this.toggle = 'expand'
+      console.log('navCom', this.toggle)
     } else {
       this.toggle = 'collapse'
+      console.log('navCom', this.toggle)
+    }
+  }
+
+  switchArrow() :void {
+    if ( this.arrow === '&#708;' ) {
+      this.arrow = '&#709;'
+      console.log('navCom', this.arrow)
+    } else {
+      this.arrow = '&#708;'
+      console.log('navCom', this.arrow)
     }
   }
 
