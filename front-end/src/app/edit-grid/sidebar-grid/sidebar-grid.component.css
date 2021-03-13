@@ -1,0 +1,18 @@
+.sidebar-grid {
+    position: relative;
+    display: grid;
+    grid-template-rows: 80% 20%;
+    grid-template-areas: "sidebar-templates"
+    "sidebar-presentation-meta";
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.sidebar-templates {
+    grid-template-areas: sidebar-templates;
+}
+
+.sidebar-presentation-meta {
+    grid-template-areas: sidebar-presentation-meta;
+}
