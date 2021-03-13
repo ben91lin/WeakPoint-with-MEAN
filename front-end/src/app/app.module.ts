@@ -12,8 +12,10 @@ import { PrevNextComponent } from './show/prev-next/prev-next.component';
 /** edit-grid */
 import { EditGridComponent } from './edit-grid/edit-grid.component';
 import { ThumbnailsComponent } from './edit-grid/thumbnails/thumbnails.component';
-import { TemplatesComponent } from './edit-grid/templates/templates.component';
 import { TinymceComponent } from './edit-grid/tinymce/tinymce.component';
+import { SidebarGridComponent } from './edit-grid/sidebar-grid/sidebar-grid.component';
+import { TemplatesComponent } from './edit-grid/sidebar-grid/templates/templates.component';
+import { PresentationMetaComponent } from './edit-grid/sidebar-grid/presentation-meta/presentation-meta.component';
 
 console.log('TINYMCE_SCRIPT_SRC', TINYMCE_SCRIPT_SRC)
 console.log(AppComponent)
@@ -25,9 +27,11 @@ console.log(AppComponent)
     ShowComponent,
     PrevNextComponent,
     EditGridComponent,
+    TinymceComponent,
     ThumbnailsComponent,
+    SidebarGridComponent,
     TemplatesComponent,
-    TinymceComponent
+    PresentationMetaComponent
   ],
   imports: [
     BrowserModule,

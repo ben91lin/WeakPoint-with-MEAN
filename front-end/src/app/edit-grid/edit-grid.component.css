@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 20% 80%;
     grid-template-rows: 80% 20%;
-    grid-template-areas: "edit-templates edit-tinymce"
+    grid-template-areas: "edit-sidebar edit-tinymce"
     "edit-thumbnails edit-thumbnails";
     top: 0;
     left: 0;
@@ -12,8 +12,8 @@
     z-index: 1;
 }
 
-.edit-templates {
-    grid-area: edit-templates;
+.edit-sidebar {
+    grid-area: edit-sidebar;
 }
 
 .edit-tinymce {
