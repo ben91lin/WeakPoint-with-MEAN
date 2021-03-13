@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+// import { NavItem } from './model/nav-item';
+
 @Component({
-  selector: 'app-dropdown',
-  templateUrl: './dropdown.component.html',
-  styleUrls: ['./dropdown.component.css'],
+  selector: 'app-navigation',
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.css'],
   animations: [
     trigger(
       'toggle',
@@ -14,7 +16,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           style(
             {
               opacity: 0,
-              top: '-20rem'
+              bottom: '-20rem'
             }
           )
         ),
@@ -23,7 +25,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
           style(
             {
               opacity: 1,
-              top: '4rem'
+              bottom: 0
             }
           )
         ),
@@ -39,23 +41,28 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     )
   ]
 })
-export class DropdownComponent implements OnInit {
+export class NavigationComponent implements OnInit {
 
-  public toggle: string
   @Input() mode: string
-  @Output() onSwitchMode = new EventEmitter<string>();
+  @Output() onSwitchMode = new EventEmitter<string>()
+  // public navItems: Array<NavItem>
+  public toggle: string
 
   constructor() { }
 
   ngOnInit(): void {
     this.toggle = 'collapse'
+    // this.navItems = [
+    //   new NavItem('Choose'),
+    //   new NavItem('Edit')
+    // ]
   }
 
-  switchMode() {
-    if (this.mode === 'show') {
-      this.onSwitchMode.emit('edit')
+  switchMode(): void {
+    if (this.mode === 'Show') {
+      this.onSwitchMode.emit('Edit')
     } else {
-      this.onSwitchMode.emit('show')
+      this.onSwitchMode.emit('Show')
     }
     
     console.log('dropdownCom', this.mode)
@@ -67,5 +74,13 @@ export class DropdownComponent implements OnInit {
     } else {
       this.toggle = 'collapse'
     }
+  }
+
+  isEdit() :boolean {
+    return (this.mode === 'Edit')
+  }
+
+  isExpand() :boolean {
+    return (this.toggle === 'expand')
   }
 }

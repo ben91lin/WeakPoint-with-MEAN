@@ -1,0 +1,11 @@
+<div class="[ navigation ] --d-flex">
+    <div *ngIf=isExpand() [@toggle]=toggle class="[ nav-item-container ]">
+        <div class="[ nav-item nav-item-text ] --d-flex -b-1 -radius-05 --mb-3" >
+            Choose
+        </div>
+        <div (click)=switchMode() class="[ nav-item nav-item-text ] --d-flex -b-1 -radius-05 --mb-3" >
+            {{ isEdit() ? 'Show' : 'Edit' }}
+        </div>
+    </div>
+    <button (click)=switchToggle() class="[ nav-toggle ] -b-1 -radius-05">^</button>
+</div>
