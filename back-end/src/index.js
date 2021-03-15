@@ -12,7 +12,7 @@ const app = express()
 /**
  * Create connection pool and start server.
  */
- MongoClient.connect(
+MongoClient.connect(
     uri,
     async function(err, client) {
         if (err) {
@@ -60,7 +60,7 @@ app.get(
     }
 )
 
-app.patch(
+app.put(
     '/api/slide/:_id',
     function(req, res) {
         req.body = {
