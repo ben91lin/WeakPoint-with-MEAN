@@ -70,6 +70,16 @@ app.put(
     }
 )
 
+app.patch(
+    '/api/slide/:_id',
+    function(req, res) {
+        req.body = {
+            'last-editor': 'yy'
+        }
+        updateOne(pool, 'slide', {_id: new ObjectId(req.params._id)}, req.body, res.json.bind(res))
+    }
+)
+
 app.delete(
     '/api/slide/:_id',
     function(req, res) {
