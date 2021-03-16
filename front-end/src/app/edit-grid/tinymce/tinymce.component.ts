@@ -1,11 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+
+declare const tinymce: any;
 
 @Component({
   selector: 'app-tinymce',
   templateUrl: './tinymce.component.html',
   styleUrls: ['./tinymce.component.css'],
 })
-export class TinymceComponent implements OnInit {
+export class TinymceComponent implements OnInit, OnDestroy {
 
   @Input() mode: string
   public title: string
@@ -20,34 +22,33 @@ export class TinymceComponent implements OnInit {
       width: '100%',
       height: '100%',
       plugins: [
-        'image',
+        'code',
+        'help',
+        'image imagetools',
+        'link autolink',
         'lists advlist',
-        'autolink link charmap print preview anchor',
-        'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table paste code help wordcount'
+        'media',
+        'quickbars',
+        'visualblocks',
+        'table',
+        'textpattern',
+        'wordcount'
         ],
-      toolbar:
-          'undo redo | image | formatselect | bold italic backcolor | \
-          alignleft aligncenter alignright alignjustify | \
-          bullist numlist outdent indent | removeformat | help | code',
+      toolbar: 'undo redo | formatselect | bold italic backcolor alignleft aligncenter alignright alignjustify removeformat | bullist numlist outdent indent | table tabledelete | visualblocks media image code | help',
       file_picker_types: 'image media',
       image_advtab: true,
-    //   file_picker_callback: function(callback :Function, value, meta : Object): void {
-    //     // Provide file and text for the link dialog
-    //     if (meta.filetype == 'file') {
-    //       callback('mypage.html', {text: 'My text'});
-    //     }
-    
-    //     // Provide image and alt text for the image dialog
-    //     if (meta.filetype == 'image') {
-    //       callback('myimage.jpg', {alt: 'My alt text'});
-    //     }
-    
-    
-    //     if (meta.filetype == 'media') {
-    //       callback('movie.mp4', {source2: 'alt.ogg', poster: 'image.jpg'});
-    //     }
-    //   }
+      images_upload_url: 'TODO',
+      imagetools_cors_hosts: 'TODO',
+      imagetools_proxy: 'TODO',
+      default_link_target: '_blank',
+      link_assume_external_targets: 'https',
+      link_default_protocol: 'https',
+      link_quicklink: true,
+      visualblocks_default_state: false,
+      contenteditable: true,
+      audio_template_callback: this.audioTemplateCb,
+      // video_template_callback: this.videoTemplateCb,
+      file_picker_callback: this.filePickerCb
     }
   }
 
@@ -55,20 +56,61 @@ export class TinymceComponent implements OnInit {
     this.title = 'New Title'
   }
 
-  // file_picker_callback(callback, value, meta): void {
-  //   // Provide file and text for the link dialog
-  //   if (meta.filetype == 'file') {
-  //     callback('mypage.html', {text: 'My text'});
-  //   }
+  ngOnDestroy(): void {
+    tinymce.remove(tinymce.activeEditor)
+  }
 
-  //   // Provide image and alt text for the image dialog
-  //   if (meta.filetype == 'image') {
-  //     callback('myimage.jpg', {alt: 'My alt text'});
-  //   }
+  private audioTemplateCb(file: any): string {
+    const mime = file.sourcemime ? `type="${file.sourcemime}"` : '';
+    const altSourceMime = file.altsourcemime ? `type="${file.altsourcemime}"` : '';
+    const altSource = file.altsource ? `<source src="${file.altsource}" ${altSourceMime}/>\n` : '';
 
+    return `<audio controls>\n<source src="${file.source}" ${mime}/>\n${altSource}</audio>`
+  }
 
-  //   if (meta.filetype == 'media') {
-  //     callback('movie.mp4', {source2: 'alt.ogg', poster: 'image.jpg'});
-  //   }
+  // private videoTemplateCb(file: any): string {
+  //   const poster = file.poster ? `poster="${file.poster}"` : '';
+  //   const mime = file.sourcemime ? ` type="${file.sourcemime}"` : '';
+  //   const altSourceMime = file.altsourcemime ? ` type="${file.altsourcemime}"` : '' ;
+  //   const altSource = file.altsource ? `<source src="${file.altsource}" ${altSourceMime} />\n` : '';
+
+  //   return `<video width="${file.width}" height="${file.height}" ${poster} controls="controls">\n<source src="${file.source}" ${mime}/>\n${altSource}</video>`
   // }
+
+  private filePickerCb(cb: any, value: any, meta: any): void {
+    const input: HTMLInputElement = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*, audio/*, video/*');
+
+    console.log('filePicker')
+
+    input.onchange = function() {
+      console.log('onchange')
+      if (!(this instanceof HTMLInputElement)) return
+      if (!this.files) return 
+    
+      const file: any = this.files[0]
+      const reader = new FileReader()
+
+      reader.onload = function () {
+        console.log('reader onload')
+        console.log(reader.result instanceof String)
+        if (!reader.result) return
+        if (reader.result instanceof ArrayBuffer) return
+
+        var id = 'blobid' + (new Date()).getTime();
+        console.log('id')
+        var blobCache =  tinymce.activeEditor.editorUpload.blobCache;
+        console.log(blobCache)
+        var base64 = reader.result.split(',')[1];
+        var blobInfo = blobCache.create(id, file, base64);
+        blobCache.add(blobInfo);
+
+        cb(blobInfo.blobUri(), { title: file.name });
+      };
+      reader.readAsDataURL(file);
+    };
+    
+    input.click();
+  }
 }
