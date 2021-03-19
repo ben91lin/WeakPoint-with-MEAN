@@ -55,7 +55,7 @@ app.post(
 app.get(
     '/api/slide/:_id',
     function(req, res) {
-        console.log(req.params)
+        console.log('get', '/api/slide/:_id', req.params)
         find(pool, 'slide', {_id: new ObjectId(req.params._id)}, res.json.bind(res))
     }
 )
