@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/main/index.js",
+    "test": "cucumber-js src/test/features"
   },
   "author": "ABen",
   "license": "MIT",
@@ -13,6 +14,9 @@
     "mongodb": "^3.6.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@cucumber/cucumber": "^7.0.0",
+    "multiple-cucumber-html-reporter": "^1.18.0",
+    "nodemon": "^2.0.7",
+    "pactum": "^3.0.8"
   }
 }
