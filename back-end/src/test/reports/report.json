@@ -1,0 +1,105 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "get-server-status;get-server-status-with-/api/status",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Get Server Status with /api/status",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I make a GET request to /api/status",
+            "match": {
+              "location": "src\\test\\features\\support\\API-stepdefs.js:10"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I receive a response",
+            "match": {
+              "location": "src\\test\\features\\support\\API-stepdefs.js:34"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 19000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 6,
+            "name": "I expect response should have a status 200",
+            "match": {
+              "location": "src\\test\\features\\support\\API-stepdefs.js:38"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "arguments": [
+              {
+                "content": "{\n    \"server status\": \"running\"\n}",
+                "line": 8
+              }
+            ],
+            "keyword": "And ",
+            "line": 7,
+            "name": "I expect response should have a json like",
+            "match": {
+              "location": "src\\test\\features\\support\\API-stepdefs.js:58"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1000000
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 0
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "get-server-status",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Get Server Status",
+    "tags": [],
+    "uri": "src\\test\\features\\API.feature"
+  }
+]
