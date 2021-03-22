@@ -39,6 +39,7 @@ MongoClient.connect(
  * In express.js line 78, exports.json = bodyParser.json
  */
 app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 
 /**
  * API
@@ -48,6 +49,7 @@ app.post(
     '/api/slide/',
     function(req, res) {
         res.status(201)
+        console.log(req.body)
         insertOne(pool, 'slide', req.body, res.json.bind(res))
     }
 )
