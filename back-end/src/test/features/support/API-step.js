@@ -31,6 +31,12 @@ Given(/I set body to/, function (body) {
     spec.withBody(body);
 });
 
+Given(/I set form body to/, function (body) {
+    console.log(body)
+    console.log(JSON.parse(body))
+    spec.withForm(JSON.parse(body));
+});
+
 When('I receive a response', async function () {
     await spec.toss();
 });

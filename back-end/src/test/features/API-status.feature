@@ -1,4 +1,4 @@
-Feature: Get Server Status
+Feature: Check Server Status
 
     Scenario: Get Server Status with /api/status
         Given I make a GET request to /api/status
